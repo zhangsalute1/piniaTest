@@ -12,6 +12,5 @@ import { getCategoryAPI } from '@/apis/testAPI.js'
 getCategoryAPI().then(res => {
     console.log(res)
 })
-
 //创建vue实例
 createApp(App).use(pinia).mount('#app')
