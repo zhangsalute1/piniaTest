@@ -17,6 +17,7 @@ const { count, doubleCount, } = storeToRefs(counterStore)
 
 onMounted(() => {
   counterStore.getList()
+  console.log(1);
 })
 
 </script>
