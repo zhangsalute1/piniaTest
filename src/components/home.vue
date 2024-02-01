@@ -1,9 +1,9 @@
 <template>
     <div>
-        我是login组件
+        我是home页面
     </div>
 </template>
 <script>
-
+console.log('home');
 </script>
 <style></style>
