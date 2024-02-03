@@ -1,15 +1,15 @@
 <template>
     <div>
-        我是layout组件
-        <!-- 二级路由的出口 -->
-        <router-view></router-view>
+        <LayoutNav />
+        <LayoutHeader />
+        <RouterView />
+        <LayoutFooter />
     </div>
 </template>
-<script>
-export default {
-
-}
+<script setup>
+import LayoutNav from '@/components/layoutNav.vue'
+import LayoutHeader from '@/components/layoutHeader.vue'
+import LayoutFooter from '@/components/layoutFooter.vue'
 </script>
-<style lang="">
-    
-</style>
+
+
