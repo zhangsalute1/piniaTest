@@ -10,11 +10,7 @@ import { createPinia } from 'pinia'
 //创建pinia
 const pinia = createPinia()
 
-// //测试接口函数
-// import { getCategoryAPI } from '@/apis/testAPI.js'
-// getCategoryAPI().then(res => {
-//     console.log(res)
-// })
+
 
 import { createRouter, createWebHistory } from 'vue-router'
 import login from "@/components/login.vue"
