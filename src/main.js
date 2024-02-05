@@ -43,4 +43,27 @@ const router = createRouter({
 
 
 //创建vue实例
-createApp(App).use(pinia).use(router).mount('#app')
+
+const app = createApp(App)
+app.use(pinia)
+app.use(router)
+app.mount('#app')
+//定义全局指令
+
+// 定义懒加载插件
+import { useIntersectionObserver } from '@vueuse/core'
+
+app.directive('img-lazy', {
+    mounted(el, binding) {
+        const { stop } = useIntersectionObserver(
+            el,
+            ([{ isIntersecting }]) => {
+                console.log(isIntersecting)
+                if (isIntersecting) {
+                    // 进入视口区域
+                    el.src = binding.value
+                    stop()
+                }
+            })
+    }
+})
