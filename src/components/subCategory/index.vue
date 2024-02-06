@@ -33,6 +33,29 @@ onMounted(() => {
     getGoodsList()
 })
 
+//tabChange切换回调
+const tabChange = (val) => {
+    console.log('tab切换了', reqData.value.sortField);
+    reqData.value.page = 1
+    getGoodsList()
+}
+
+//加载更多
+const load = async () => {
+    console.log('加载更多数据');
+    // 获取下一页的数据
+    reqData.value.page++
+    const res = await getSubCategoryAPI(reqData.value)
+    goodsList.value = [...goodsList.value, ...res.result.items]
+    //加载完毕，停止监听
+    if (res.result.items.length === 0) {
+        disabled.value = true
+    }
+
+}
+
+//disabled是否禁用
+const disabled = ref(false)
 
 </script>
 
@@ -48,12 +71,12 @@ onMounted(() => {
             </el-breadcrumb>
         </div>
         <div class="sub-container">
-            <el-tabs>
+            <el-tabs v-model="reqData.sortField" @tab-change="tabChange">
                 <el-tab-pane label="最新商品" name="publishTime"></el-tab-pane>
                 <el-tab-pane label="最高人气" name="orderNum"></el-tab-pane>
                 <el-tab-pane label="评论最多" name="evaluateNum"></el-tab-pane>
             </el-tabs>
-            <div class="body">
+            <div class="body" v-infinite-scroll="load" :infinite-scroll-disabled="disabled">
                 <!-- 商品列表-->
                 <GoodsItem v-for="goods in goodsList" :goods="goods" :key="goods.id" />
             </div>
