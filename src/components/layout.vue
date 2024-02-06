@@ -3,7 +3,8 @@
         <layoutFixed />
         <LayoutNav />
         <LayoutHeader />
-        <RouterView />
+
+        <RouterView :key="$route.fullPath" />
         <LayoutFooter />
     </div>
 </template>
