@@ -3,6 +3,7 @@ import { getDeatilAPI } from '@/apis/detail'
 import { ref, onMounted } from 'vue'
 import { useRoute } from 'vue-router'
 import detailHot from '@/components/Detail/components/detailHot.vue'
+import smallAndBigPic from '@/components/smallAndBigPic.vue'
 const route = useRoute()
 const goods = ref({})
 const getGoods = async () => {
@@ -37,7 +38,7 @@ onMounted(() => {
                     <div class="goods-info">
                         <div class="media">
                             <!-- 图片预览区 -->
-
+                            <smallAndBigPic></smallAndBigPic>
                             <!-- 统计数量 -->
                             <ul class="goods-sales">
                                 <li>
@@ -121,10 +122,9 @@ onMounted(() => {
                         <!-- 24热榜+专题推荐 -->
                         <div class="goods-aside">
                             <!-- 24小时 -->
-                            <detailHot />
+                            <detailHot :hotType="1" />
                             <!-- 周 -->
-
-                            <detailHot />
+                            <detailHot :hotType="2" />
                         </div>
                     </div>
                 </div>
