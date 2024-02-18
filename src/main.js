@@ -66,4 +66,7 @@ app.mount('#app')
 
 import { lazyPlugin } from "@/directives/index.js"
 
+//引入全局组件插件
+import { componentPlugin } from "@/components/index.js"
+app.use(componentPlugin)
 app.use(lazyPlugin)
