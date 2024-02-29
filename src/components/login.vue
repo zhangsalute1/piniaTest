@@ -19,7 +19,7 @@ const rules = {
     agree: [
         {
             validator: (rule, value, callback) => {
-                console.log(value);
+                // console.log(value);
                 if (value) {
                     callback();
                 } else {
@@ -31,8 +31,17 @@ const rules = {
     ]
 }
 
+const formRef = ref(null)
 
-
+const doLogin = () => {
+    formRef.value.validate((vaild) => {
+        if (vaild) {
+            console.log('登录成功');
+        } else {
+            console.log('登录失败');
+        }
+    })
+}
 </script>
 
 
@@ -57,7 +66,8 @@ const rules = {
                 </nav>
                 <div class="account-box">
                     <div class="form">
-                        <el-form :model="form" :rules="rules" label-position="right" label-width="60px" status-icon>
+                        <el-form ref="formRef" :model="form" :rules="rules" label-position="right" label-width="60px"
+                            status-icon>
                             <el-form-item label="账户" prop="account">
                                 <el-input v-model="form.account" />
                             </el-form-item>
@@ -69,7 +79,7 @@ const rules = {
                                     我已同意隐私条款和服务条款
                                 </el-checkbox>
                             </el-form-item>
-                            <el-button size="large" class="subBtn">点击登录</el-button>
+                            <el-button size="large" class="subBtn" @click="doLogin">点击登录</el-button>
                         </el-form>
                     </div>
                 </div>
