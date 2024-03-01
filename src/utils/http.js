@@ -13,7 +13,7 @@ const httpInstance = axios.create({
 httpInstance.interceptors.request.use(config => {
     //从pinia里面获取数据
     const userStore = useUserStore()
-    const token = userStore.userInfo.result.token
+    const token = userStore?.userInfo?.result?.token
     if (token) {
         config.headers.Authorization = `Bearer ${token}`
     }

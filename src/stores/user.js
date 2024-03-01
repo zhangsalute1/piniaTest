@@ -12,10 +12,14 @@ export const useUserStore = defineStore('user', () => {
         const res = await loginAPI({ account, password })
         userInfo.value = res
     }
+    const clearUserInfo = () => {
+        userInfo.value = {}
+    }
     //以对象的格式把state和actionreturn出去
     return {
         userInfo,
-        getUserInfo
+        getUserInfo,
+        clearUserInfo
     }
 }, {
     persist: true,
