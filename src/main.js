@@ -63,3 +63,5 @@ import { lazyPlugin } from "@/directives/index.js"
 import { componentPlugin } from "@/components/index.js"
 app.use(componentPlugin)
 app.use(lazyPlugin)
+
+export default router
