@@ -1,17 +1,13 @@
 import { createApp } from 'vue'
 import App from './App.vue'
-
 //引入初始化样式
 import '@/styles/common.scss'
-
 //导入createpinia
 import { createPinia } from 'pinia'
-
+import piniaPluginPersistedstate from 'pinia-plugin-persistedstate'
 //创建pinia
 const pinia = createPinia()
-
-
-
+pinia.use(piniaPluginPersistedstate)
 import { createRouter, createWebHistory } from 'vue-router'
 import login from "@/components/login.vue"
 import layout from "@/components/layout.vue"
@@ -55,9 +51,7 @@ const router = createRouter({
     }
 })
 
-
 //创建vue实例
-
 const app = createApp(App)
 app.use(pinia)
 app.use(router)
@@ -65,7 +59,6 @@ app.mount('#app')
 //定义全局指令
 
 import { lazyPlugin } from "@/directives/index.js"
-
 //引入全局组件插件
 import { componentPlugin } from "@/components/index.js"
 app.use(componentPlugin)
