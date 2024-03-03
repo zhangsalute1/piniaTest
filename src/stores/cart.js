@@ -1,7 +1,7 @@
 import { defineStore } from "pinia";
 import { computed, ref } from "vue";
 import { useUserStore } from "@/stores/user";
-import { insertCartApi, findNewCartListApi } from "@/apis/cart";
+import { insertCartApi, findNewCartListApi, deleteCartApi } from "@/apis/cart";
 
 export const useCartStore = defineStore('cart', () => {
     const userStore = useUserStore()
@@ -27,10 +27,16 @@ export const useCartStore = defineStore('cart', () => {
         }
     }
     //删除购物车
-    const delCart = (skuId) => {
-        console.log('delCart');
-        const idx = cartList.value.findIndex((item) => skuId === item.skuId)
-        cartList.value.splice(idx, 1)
+    const delCart = async (skuId) => {
+        if (isLogin) {
+            //删除购物车接口
+            await deleteCartApi([skuId])
+            const res = await findNewCartListApi()
+            cartList.value = res.result
+        } else {
+            const idx = cartList.value.findIndex((item) => skuId === item.skuId)
+            cartList.value.splice(idx, 1)
+        }
 
     }
     //所有项的count之和
