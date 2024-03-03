@@ -1,6 +1,12 @@
 <script setup>
 import { useCartStore } from '@/stores/cart'
 const CartStore = useCartStore()
+
+const singleCheck = (i, selected) => {
+    console.log(i, 'i');
+    console.log(selected, 'selected');
+    CartStore.singleChecked(i.skuId, selected)
+}
 </script>
 
 <template>
@@ -24,7 +30,7 @@ const CartStore = useCartStore()
                     <tbody>
                         <tr v-for="i in CartStore.cartList" :key="i.id">
                             <td>
-                                <el-checkbox />
+                                <el-checkbox :model-value="i.selected" @change="(selected) => singleCheck(i, selected)" />
                             </td>
                             <td>
                                 <div class="goods">

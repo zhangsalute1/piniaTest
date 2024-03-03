@@ -31,13 +31,18 @@ export const useCartStore = defineStore('cart', () => {
             return a + c.count * c.price;
         }, 0);
     });
-
+    //单选功能
+    const singleChecked = (skuId, selected) => {
+        const item = cartList.value.find((item) => item.skuId === skuId)
+        item.selected = selected
+    }
     return {
         cartList,
         addCart,
         delCart,
         allCount,
-        allPrice
+        allPrice,
+        singleChecked
     }
 }, {
     persist: true,
