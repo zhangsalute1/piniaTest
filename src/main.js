@@ -15,6 +15,7 @@ import home from "@/components/home.vue"
 import category from "@/components/category.vue"
 import subCategory from "@/components/subCategory/index.vue"
 import Detail from "@/components/Detail/index.vue"
+import CartLIst from "@/components/CartLIst/index.vue"
 const router = createRouter({
     history: createWebHistory(),
     routes: [
@@ -37,6 +38,10 @@ const router = createRouter({
                 {
                     path: 'detail/:id',
                     component: Detail
+                },
+                {
+                    path: 'CartLIst',
+                    component: CartLIst
                 }
             ]
         },
