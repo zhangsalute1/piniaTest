@@ -71,6 +71,16 @@ export const useCartStore = defineStore('cart', () => {
         }, 0);
     })
     //已选择商品的价钱合计
+    const selectedPrice = computed(() => {
+        return cartList.value.filter(item => item.selected).reduce((a, c) => {
+            return a + c.count * c.price;
+        }, 0);
+    })
+
+    //清楚购物车
+    const clearCart = () => {
+        cartList.value = []
+    }
 
     return {
         cartList,
@@ -81,7 +91,9 @@ export const useCartStore = defineStore('cart', () => {
         singleChecked,
         isAll,
         allChecked,
-        selectedCount
+        selectedCount,
+        selectedPrice,
+        clearCart
     }
 }, {
     persist: true,

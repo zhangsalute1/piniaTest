@@ -82,7 +82,7 @@ const allChecked = (selected) => {
             <div class="action">
                 <div class="batch">
                     共 {{ CartStore.allCount }}件商品，已选择 {{ CartStore.selectedCount }} 件，商品合计：
-                    <span class="red">¥ 200.00 </span>
+                    <span class="red">{{ CartStore.selectedPrice }}</span>
                 </div>
                 <div class="total">
                     <el-button size="large" type="primary">下单结算</el-button>
