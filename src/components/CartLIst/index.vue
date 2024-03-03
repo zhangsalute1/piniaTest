@@ -7,6 +7,9 @@ const singleCheck = (i, selected) => {
     console.log(selected, 'selected');
     CartStore.singleChecked(i.skuId, selected)
 }
+const allChecked = (selected) => {
+    CartStore.allChecked(selected)
+}
 </script>
 
 <template>
@@ -17,7 +20,7 @@ const singleCheck = (i, selected) => {
                     <thead>
                         <tr>
                             <th width="120">
-                                <el-checkbox />
+                                <el-checkbox :model-value="CartStore.isAll" @change="allChecked" />
                             </th>
                             <th width="400">商品信息</th>
                             <th width="220">单价</th>

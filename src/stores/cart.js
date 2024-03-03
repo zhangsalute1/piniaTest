@@ -36,13 +36,23 @@ export const useCartStore = defineStore('cart', () => {
         const item = cartList.value.find((item) => item.skuId === skuId)
         item.selected = selected
     }
+    //是否全选
+    const isAll = computed(() => {
+        return cartList.value.every(item => item.selected)
+    })
+    //全选功能
+    const allChecked = (selected) => {
+        cartList.value.forEach(item => item.selected = selected)
+    }
     return {
         cartList,
         addCart,
         delCart,
         allCount,
         allPrice,
-        singleChecked
+        singleChecked,
+        isAll,
+        allChecked
     }
 }, {
     persist: true,
