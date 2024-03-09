@@ -17,6 +17,7 @@ import subCategory from "@/components/subCategory/index.vue"
 import Detail from "@/components/Detail/index.vue"
 import CartLIst from "@/components/CartLIst/index.vue"
 import CheckOut from "@/components/CheckOut/index.vue"
+import Pay from "@/components/Pay/index.vue"
 const router = createRouter({
     history: createWebHistory(),
     routes: [
@@ -47,6 +48,10 @@ const router = createRouter({
                 {
                     path: 'CheckOut',
                     component: CheckOut
+                },
+                {
+                    path: 'Pay',
+                    component: Pay
                 }
             ]
         },
