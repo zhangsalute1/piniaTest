@@ -2,7 +2,7 @@
 import { getCheckInfoAPI, createOrderAPI } from '@/apis/checkOut'
 import { ref, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
-import { } from "@/"
+
 const router = useRouter()
 const checkInfo = ref({})  // 订单对象
 const curAddress = ref({})
